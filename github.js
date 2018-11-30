@@ -8,16 +8,17 @@ class github{
     //Method to get user data
     async getUser(user){
         let userResponse = await fetch(`https://api.github.com/users/${user}?client_id=${this.client_id}&client_secret=${this.client_Secret}`);
-        let repoResponse = await fetch(`https://api.github.com/users/${user}/repos?client_id=${this.client_id}&client_secret=${this.client_Secret}&sort=${this.repos_sort}&per_page=${this.repos_count}`);
-
-        let userData = await userResponse.json();
-        let repoData = await repoResponse.json();
+        
         //checking for http errors
         try{
-            if(userResponse.status!=200 || repoResponse.status!=200){
+            if(userResponse.status!=200){
                 throw new httpError(userResponse);
             }
             else{
+                //fetch repositories
+                let repoResponse = await fetch(`https://api.github.com/users/${user}/repos?client_id=${this.client_id}&client_secret=${this.client_Secret}&sort=${this.repos_sort}&per_page=${this.repos_count}`);
+                let userData = await userResponse.json();
+                let repoData = await repoResponse.json();
                 return {
                     userData,
                     repoData

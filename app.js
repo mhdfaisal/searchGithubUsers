@@ -20,8 +20,6 @@ function getUser(e){
         ui.showAlert('User Not Found','alert alert-danger');
         //Clear UI
         ui.clearUI();
-        //Log the error
-        console.log(err);
     });
     }
     else{

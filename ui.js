@@ -83,7 +83,8 @@ class UI{
     }
     //Clear Alerts
     clearAlert(){
-       document.querySelector('.alert').remove();
+        if(document.querySelector('.alert')!=null)
+            document.querySelector('.alert').remove();
     }
 }
  
