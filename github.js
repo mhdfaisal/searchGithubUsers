@@ -5,7 +5,7 @@ class github{
         this.repos_count=5;
         this.repos_sort = 'created: asc';
     }
-    //Method to get user
+    //Method to get user data
     async getUser(user){
         let userResponse = await fetch(`https://api.github.com/users/${user}?client_id=${this.client_id}&client_secret=${this.client_Secret}`);
         let repoResponse = await fetch(`https://api.github.com/users/${user}/repos?client_id=${this.client_id}&client_secret=${this.client_Secret}&sort=${this.repos_sort}&per_page=${this.repos_count}`);

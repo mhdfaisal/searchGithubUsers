@@ -27,9 +27,7 @@ class UI{
             </div>
             </div>
             </div>
-            </div>
-        
-        `
+            </div>`
     }
 
     //Function to show repositories
@@ -61,5 +59,31 @@ class UI{
        `
     }
 
+    //clearUI
+    clearUI(){
+        this.profile.innerHTML='';
+        this.repos.innerHTML='';
+    }
+
+    //showAlert
+    showAlert(message,className){
+        if(document.querySelector('.alert')!=null){
+            this.clearAlert();
+        }
+        //Creating an alert div
+        let div = document.createElement('div');
+        div.className = className;
+        div.textContent = message;
+        //Parent element
+        const parentDiv = document.querySelector('.searchBoxContainer');
+        parentDiv.insertBefore(div, parentDiv.firstElementChild);
+        //set timeout after 2s to clear the alert
+        setTimeout(()=>this.clearAlert(), 1000);
+
+    }
+    //Clear Alerts
+    clearAlert(){
+       document.querySelector('.alert').remove();
+    }
 }
  
